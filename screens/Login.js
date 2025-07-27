@@ -7,56 +7,61 @@ import {
   Dimensions
 } from "react-native";
 import { Block, Button, Text, theme } from "galio-framework";
+import { Header, Icon, Input, Select, Switch } from "../components/";
 
 const { height, width } = Dimensions.get("screen");
 
 import argonTheme from "../constants/Theme";
 import Images from "../constants/Images";
 
-class Onboarding extends React.Component {
+class Login extends React.Component {
   render() {
     const { navigation } = this.props;
 
     return (
       <Block flex style={styles.container}>
-        <StatusBar hidden />
+        
         <Block flex center>
         <ImageBackground
             source={Images.Onboarding}
-            style={{ height, width, zIndex: 1 }}
+            style={{ height, width }}
           />
         </Block>
-        <Block center>
-          <Image source={Images.LogoOnboarding} style={styles.logo} />
+        <Block center flex>
+          <Block>
+                  <Text color="white" size={40}>
+                    Mobile Number
+                  </Text>
+                </Block>
+                <Block flex>
+          <Input 
+            placeholder="Enter Your Mobile Number"
+            fullWidth
+            type="number"
+            iconContent={
+              <Icon
+                size={12}
+                style={{ marginRight: 10 }}
+                color={argonTheme.COLORS.ICON}
+                //name="g-check"
+                family="ArgonExtra"
+              />
+            }
+          />
+        </Block>
         </Block>
  
         <Block flex space="between" style={styles.padded}>
             <Block flex space="around" style={{ zIndex: 2 }}>
-              <Block style={styles.title}>
-                <Block>
-                  <Text color="white" size={60}>
-                    On Time,
-                  </Text>
-                </Block>
-                <Block>
-                  <Text color="white" size={60}>
-                    Every Time
-                  </Text>
-                </Block>
-                <Block style={styles.subTitle}>
-                  <Text color="white" size={16}>
-                    सफ़र आपका, फ़िक्र हमारी
-                  </Text>
-                </Block>
-              </Block>
+            
               <Block center>
                 <Button
                   style={styles.button}
                   color={argonTheme.COLORS.SECONDARY}
-                  onPress={() => navigation.navigate("Login")}
+                  onPress={() => navigation.navigate("Otp")}
                   textStyle={{ color: argonTheme.COLORS.BLACK }}
                 >
-                  Get Started
+                  Login
                 </Button>
               </Block>
           </Block>
@@ -71,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.COLORS.BLACK
   },
   padded: {
-    paddingHorizontal: theme.SIZES.BASE * 2,
+    //paddingHorizontal: theme.SIZES.BASE * 2,
     position: "relative",
     bottom: theme.SIZES.BASE,
     zIndex: 2,
@@ -97,4 +102,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Onboarding;
+export default Login;

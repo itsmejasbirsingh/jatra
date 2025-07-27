@@ -13,14 +13,16 @@ function CustomDrawerContent({
   state,
   ...rest
 }) {
-  const screens = ["Home", "Profile", "Account", "Elements", "Articles"];
+  const screens = ["Home"
+    //,"Profile", "Account", "Elements", "Articles"
+    ];
   return (
     <Block
       style={styles.container}
       forceInset={{ top: "always", horizontal: "never" }}
     >
       <Block flex={0.06} style={styles.header}>
-        <Image styles={styles.logo} source={Images.Logo} />
+        <Image style={{ width: 100, height: 80, marginBottom: 40 }} source={Images.LogoOnboardingWhite} />
       </Block>
       <Block flex style={{ paddingLeft: 8, paddingRight: 14 }}>
         <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
@@ -45,11 +47,11 @@ function CustomDrawerContent({
                 borderWidth: StyleSheet.hairlineWidth,
               }}
             />
-            <Text color="#8898AA" style={{ marginTop: 16, marginLeft: 8 }}>
+            {/* <Text color="#8898AA" style={{ marginTop: 16, marginLeft: 8 }}>
               DOCUMENTATION
-            </Text>
+            </Text> */}
           </Block>
-          <DrawerCustomItem title="Getting Started" navigation={navigation} />
+          {/* <DrawerCustomItem title="Getting Started" navigation={navigation} /> */}
         </ScrollView>
       </Block>
     </Block>

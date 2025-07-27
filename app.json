@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Argon FREE React Native",
-    "slug": "argon-free-react-native",
+    "name": "Jatra",
+    "slug": "jatra",
     "privacy": "public",
     "platforms": [
       "ios",
@@ -24,6 +24,14 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": "Argon React Native, based on Argon Design System. Coded by Creative Tim"
+    "description": "Jatra: Taxi booking app",
+    "extra": {
+      "eas": {
+        "projectId": "82100386-a127-4950-9a9e-d6375724b74c"
+      }
+    },
+    "android": {
+      "package": "com.itsmejasbirsingh.jatra"
+    }
   }
 }

@@ -13,11 +13,13 @@ import Home from "../screens/Home";
 import Onboarding from "../screens/Onboarding";
 import Pro from "../screens/Pro";
 import Profile from "../screens/Profile";
+import Login from "../screens/Login";
 import React from "react";
 import Register from "../screens/Register";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
+import OTP from "../screens/OTP";
 
 const { width } = Dimensions.get("screen");
 
@@ -206,6 +208,70 @@ export default function OnboardingStack(props) {
       <Stack.Screen
         name="Onboarding"
         component={Onboarding}
+        option={{
+          headerTransparent: true,
+        }}
+      />
+      {/* <Stack.Screen name="App" component={AppStack} /> */}
+      <Stack.Screen name="Login" component={LoginStack} />
+    </Stack.Navigator>
+  );
+}
+
+ function LoginStack(props) {
+  return (
+    <Stack.Navigator
+      initialRouteName="Login"
+      screenOptions={{
+        mode: "card",
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        option={{
+          headerTransparent: true,
+        }}
+      />
+      <Stack.Screen name="Otp" component={OtpStack} />
+    </Stack.Navigator>
+  );
+}
+
+ function OtpStack(props) {
+  return (
+    <Stack.Navigator
+      initialRouteName="OTP"
+      screenOptions={{
+        mode: "card",
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen
+        name="OTP"
+        component={OTP}
+        option={{
+          headerTransparent: true,
+        }}
+      />
+      <Stack.Screen name="Register" component={RegisterStack} />
+    </Stack.Navigator>
+  );
+}
+
+ function RegisterStack(props) {
+  return (
+    <Stack.Navigator
+      initialRouteName="Register"
+      screenOptions={{
+        mode: "card",
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen
+        name="Register"
+        component={Register}
         option={{
           headerTransparent: true,
         }}

@@ -15,6 +15,7 @@ const { width, height } = Dimensions.get("screen");
 
 class Register extends React.Component {
   render() {
+     const { navigation } = this.props;
     return (
       <Block flex middle>
         <StatusBar hidden />
@@ -23,8 +24,8 @@ class Register extends React.Component {
           style={{ width, height, zIndex: 1 }}
         >
           <Block safe flex middle>
-            <Block style={styles.registerContainer}>
-              <Block flex={0.25} middle style={styles.socialConnect}>
+            <Block>
+              {/* <Block flex={0.25} middle style={styles.socialConnect}>
                 <Text color="#8898AA" size={12}>
                   Sign up with
                 </Text>
@@ -54,11 +55,11 @@ class Register extends React.Component {
                     </Block>
                   </Button>
                 </Block>
-              </Block>
+              </Block> */}
               <Block flex>
                 <Block flex={0.17} middle>
                   <Text color="#8898AA" size={12}>
-                    Or sign up the classic way
+                    Just few more details.
                   </Text>
                 </Block>
                 <Block flex center>
@@ -70,7 +71,7 @@ class Register extends React.Component {
                     <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                       <Input
                         borderless
-                        placeholder="Name"
+                        placeholder="Full Name"
                         iconContent={
                           <Icon
                             size={16}
@@ -97,7 +98,7 @@ class Register extends React.Component {
                         }
                       />
                     </Block>
-                    <Block width={width * 0.8}>
+                    {/* <Block width={width * 0.8}>
                       <Input
                         password
                         borderless
@@ -121,8 +122,8 @@ class Register extends React.Component {
                           strong
                         </Text>
                       </Block>
-                    </Block>
-                    <Block row width={width * 0.75}>
+                    </Block> */}
+                    {/* <Block row width={width * 0.75}>
                       <Checkbox
                         checkboxStyle={{
                           borderWidth: 3
@@ -140,11 +141,11 @@ class Register extends React.Component {
                       >
                         Privacy Policy
                       </Button>
-                    </Block>
+                    </Block> */}
                     <Block middle>
-                      <Button color="primary" style={styles.createButton}>
+                      <Button color="primary" style={styles.createButton} onPress={() => navigation.navigate("App")}>
                         <Text bold size={14} color={argonTheme.COLORS.WHITE}>
-                          CREATE ACCOUNT
+                          LET'S GO
                         </Text>
                       </Button>
                     </Block>

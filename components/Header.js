@@ -12,26 +12,28 @@ const { height, width } = Dimensions.get('window');
 const iPhoneX = () => Platform.OS === 'ios' && (height === 812 || width === 812 || height === 896 || width === 896);
 
 const BellButton = ({isWhite, style, navigation}) => (
-  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
-    <Icon
-      family="ArgonExtra"
-      size={16}
-      name="bell"
-      color={argonTheme.COLORS[isWhite ? 'WHITE' : 'ICON']}
-    />
-    <Block middle style={styles.notify} />
-  </TouchableOpacity>
+  null
+  // <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
+  //   <Icon
+  //     family="ArgonExtra"
+  //     size={16}
+  //     name="bell"
+  //     color={argonTheme.COLORS[isWhite ? 'WHITE' : 'ICON']}
+  //   />
+  //   <Block middle style={styles.notify} />
+  // </TouchableOpacity>
 );
 
 const BasketButton = ({isWhite, style, navigation}) => (
-  <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
-    <Icon
-      family="ArgonExtra"
-      size={16}
-      name="basket"
-      color={argonTheme.COLORS[isWhite ? 'WHITE' : 'ICON']}
-    />
-  </TouchableOpacity>
+  null
+  // <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
+  //   <Icon
+  //     family="ArgonExtra"
+  //     size={16}
+  //     name="basket"
+  //     color={argonTheme.COLORS[isWhite ? 'WHITE' : 'ICON']}
+  //   />
+  // </TouchableOpacity>
 );
 
 const SearchButton = ({isWhite, style, navigation}) => (
@@ -108,15 +110,29 @@ class Header extends React.Component {
   renderSearch = () => {
     const { navigation } = this.props;
     return (
-      <Input
+      <Block>
+        <Input
         right
         color="black"
         style={styles.search}
-        placeholder="What are you looking for?"
+        placeholder="Pickup Location?"
         placeholderTextColor={'#8898AA'}
         onFocus={() => navigation.navigate('Pro')}
         iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="search-zoom-in" family="ArgonExtra" />}
       />
+      <Input
+        right
+        color="black"
+        style={styles.search}
+        placeholder="Where you are heading?"
+        placeholderTextColor={'#8898AA'}
+        onFocus={() => navigation.navigate('Pro')}
+        iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="search-zoom-in" family="ArgonExtra" />}
+      />
+      <Button color="success" style={styles.button}>
+                    SEARCH
+                  </Button>
+      </Block>
     );
   }
   renderOptions = () => {
@@ -158,8 +174,8 @@ class Header extends React.Component {
       return (
         <Block center>
           {search ? this.renderSearch() : null}
-          {options ? this.renderOptions() : null}
-          {tabs ? this.renderTabs() : null}
+          {/* {options ? this.renderOptions() : null}
+          {tabs ? this.renderTabs() : null} */}
         </Block>
       );
     }
@@ -214,6 +230,7 @@ const styles = StyleSheet.create({
   button: {
     padding: 12,
     position: 'relative',
+    marginLeft: 16
   },
   title: {
     width: '100%',

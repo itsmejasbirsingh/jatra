@@ -81,7 +81,7 @@ class Elements extends React.Component {
             </Block>
             <Block flex={1.25} right>
               <Button center color="default" style={styles.optionsButton}>
-                SAVE FOR LATER
+                SAVE 4 LATER
               </Button>
             </Block>
           </Block>
