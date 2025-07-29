@@ -27,13 +27,16 @@ class Login extends React.Component {
             style={{ height, width }}
           />
         </Block>
+        <Block center>
+                  <Image source={Images.LogoOnboarding} style={styles.logo} />
+                </Block>
         <Block center flex>
           <Block>
-                  <Text color="white" size={40}>
+                  <Text color="white" size={20}>
                     Mobile Number
                   </Text>
                 </Block>
-                <Block flex>
+                <Block flex width={width * 0.8}>
           <Input 
             placeholder="Enter Your Mobile Number"
             fullWidth

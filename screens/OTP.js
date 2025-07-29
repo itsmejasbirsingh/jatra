@@ -27,16 +27,19 @@ class OTP extends React.Component {
             style={{ height, width }}
           />
         </Block>
+        <Block center>
+                          <Image source={Images.LogoOnboarding} style={styles.logo} />
+                        </Block>
         <Block center flex>
             
           <Block>
-                  <Text color="white" size={40}>
+                  <Text color="white" size={20}>
                     Enter OTP
                   </Text>
                 </Block>
-                <Block flex>
+                <Block flex width={width * 0.8}>
           <Input 
-            placeholder=""
+            placeholder="1234"
             fullWidth
             type="number"
             iconContent={

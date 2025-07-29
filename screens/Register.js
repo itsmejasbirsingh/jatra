@@ -4,7 +4,8 @@ import {
   ImageBackground,
   Dimensions,
   StatusBar,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Image
 } from "react-native";
 import { Block, Checkbox, Text, theme } from "galio-framework";
 
@@ -23,6 +24,9 @@ class Register extends React.Component {
           source={Images.RegisterBackground}
           style={{ width, height, zIndex: 1 }}
         >
+          <Block center>
+                                <Image source={Images.LogoOnboarding} style={styles.logo} />
+                              </Block>
           <Block safe flex middle>
             <Block>
               {/* <Block flex={0.25} middle style={styles.socialConnect}>
@@ -56,6 +60,7 @@ class Register extends React.Component {
                   </Button>
                 </Block>
               </Block> */}
+              
               <Block flex>
                 <Block flex={0.17} middle>
                   <Text color="#8898AA" size={12}>
@@ -210,7 +215,14 @@ const styles = StyleSheet.create({
   createButton: {
     width: width * 0.5,
     marginTop: 25
-  }
+  },
+  logo: {
+    width: 200,
+    height: 150,
+    zIndex: 2,
+    position: 'relative',
+    marginTop: '20%'
+  },
 });
 
 export default Register;

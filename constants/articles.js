@@ -1,19 +1,19 @@
 export default [
   {
-    title: 'Ice cream is made with carrageenan …',
-    image: 'https://images.unsplash.com/photo-1516559828984-fb3b99548b21?ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80',
-    cta: 'View article', 
+    title: '865/- (Max 3 Persons)',
+    image: 'https://media.istockphoto.com/id/1414019690/photo/auto-rickshaw-bajaj-tuktuk-3d-rendering-on-white-background.jpg?s=612x612&w=0&k=20&c=qm75sswRZHLLJeGe0G1WZsioNToC1rhiJpBpTXBAVm8=',
+    cta: 'Book Now', 
     horizontal: true
   },
   {
-    title: 'Is makeup one of your daily esse …',
-    image: 'https://images.unsplash.com/photo-1519368358672-25b03afee3bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2004&q=80',
-    cta: 'View article'
+    title: '565/- (Max 1 Person)',
+    image: 'https://cdn.bikedekho.com/processedimages/hero-motocorp/hero-motocorp-splendor/source/hero-motocorp-splendor68541139c73c8.jpg?imwidth=400&impolicy=resize',
+    cta: 'Book Now'
   },
   {
-    title: 'Coffee is more than just a drink: It’s …',
-    image: 'https://images.unsplash.com/photo-1500522144261-ea64433bbe27?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80',
-    cta: 'View article' 
+    title: '1260/-',
+    image: 'https://media.istockphoto.com/id/495605964/photo/generic-compact-red-car.jpg?s=612x612&w=0&k=20&c=eElEDukSWi6HsUPXflSebpUm7j9tPNq7WvFOGIlqgeA=',
+    cta: 'Book Now' 
   },
   {
     title: 'Fashion is a popular style, especially in …',
