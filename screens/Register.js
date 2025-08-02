@@ -15,8 +15,51 @@ import { Images, argonTheme } from "../constants";
 const { width, height } = Dimensions.get("screen");
 
 class Register extends React.Component {
+
+
+  constructor() {
+    super();
+    this.state = {
+      fullName: '',
+      email: '',
+      isFormValid: false,
+      message: ''
+    };
+  }
+
+  validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+  onPressRegister() {
+
+    if (this.state.fullName.length < 3) {
+      this.setState({
+        isFormValid: false,
+        message: 'Enter Full Name'
+      })
+    }
+    else if (!this.validateEmail(this.state.email)) {
+      this.setState({
+        isFormValid: false,
+        message: 'Enter a valid Email ID'
+      })
+    } else {
+      this.props.navigation.navigate("App")
+      this.setState({
+        isFormValid: true,
+        message: ''
+      })
+    }
+
+  }
+
   render() {
-     const { navigation } = this.props;
+    const { navigation } = this.props;
     return (
       <Block flex middle>
         <StatusBar hidden />
@@ -25,8 +68,8 @@ class Register extends React.Component {
           style={{ width, height, zIndex: 1 }}
         >
           <Block center>
-                                <Image source={Images.LogoOnboarding} style={styles.logo} />
-                              </Block>
+            <Image source={Images.LogoOnboarding} style={styles.logo} />
+          </Block>
           <Block safe flex middle>
             <Block>
               {/* <Block flex={0.25} middle style={styles.socialConnect}>
@@ -60,12 +103,19 @@ class Register extends React.Component {
                   </Button>
                 </Block>
               </Block> */}
-              
+
               <Block flex>
                 <Block flex={0.17} middle>
-                  <Text color="#8898AA" size={12}>
+
+                  {this.state.message ? <Text
+                    p
+                    style={{ marginLeft: 2 }}
+                    color={argonTheme.COLORS.ERROR}
+                  >
+                    {this.state.message}
+                  </Text> : <Text color="#8898AA" size={12}>
                     Just few more details.
-                  </Text>
+                  </Text>}
                 </Block>
                 <Block flex center>
                   <KeyboardAvoidingView
@@ -75,6 +125,9 @@ class Register extends React.Component {
                   >
                     <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                       <Input
+                        onChangeText={text => this.setState({
+                          fullName: text
+                        })}
                         borderless
                         placeholder="Full Name"
                         iconContent={
@@ -90,6 +143,9 @@ class Register extends React.Component {
                     </Block>
                     <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                       <Input
+                        onChangeText={text => this.setState({
+                          email: text
+                        })}
                         borderless
                         placeholder="Email"
                         iconContent={
@@ -148,7 +204,9 @@ class Register extends React.Component {
                       </Button>
                     </Block> */}
                     <Block middle>
-                      <Button color="primary" style={styles.createButton} onPress={() => navigation.navigate("App")}>
+                      <Button color="primary" style={styles.createButton} onPress={
+                        () => this.onPressRegister()
+                      }>
                         <Text bold size={14} color={argonTheme.COLORS.WHITE}>
                           LET'S GO
                         </Text>

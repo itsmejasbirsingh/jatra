@@ -15,70 +15,104 @@ import argonTheme from "../constants/Theme";
 import Images from "../constants/Images";
 
 class OTP extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      otp: '',
+      isFormValid: false,
+      message: ''
+    };
+  }
+
+  onPressVerify() {
+
+    if (this.state.otp.length === 4) {
+      this.props.navigation.navigate("Register")
+      this.setState({
+        isFormValid: true,
+        message: ''
+      })
+    } else {
+      this.setState({
+        isFormValid: false,
+        message: 'Invalid OTP'
+      })
+    }
+
+  }
+
   render() {
     const { navigation } = this.props;
 
+
     return (
       <Block flex style={styles.container}>
-        
+
         <Block flex center>
-        <ImageBackground
+          <ImageBackground
             source={Images.Onboarding}
             style={{ height, width }}
           />
         </Block>
         <Block center>
-                          <Image source={Images.LogoOnboarding} style={styles.logo} />
-                        </Block>
+          <Image source={Images.LogoOnboarding} style={styles.logo} />
+        </Block>
         <Block center flex>
-            
           <Block>
-                  <Text color="white" size={20}>
-                    Enter OTP
-                  </Text>
-                </Block>
-                <Block flex width={width * 0.8}>
-          <Input 
-            placeholder="1234"
-            fullWidth
-            type="number"
-            iconContent={
-              <Icon
-                size={12}
-                style={{ marginRight: 10 }}
-                color={argonTheme.COLORS.ICON}
-                //name="g-check"
-                family="ArgonExtra"
-              />
-            }
-          />
-        </Block>
-        </Block>
- 
-        <Block flex space="between" style={styles.padded}>
-            <Block flex space="around" style={{ zIndex: 2 }}>
-            
-              <Block center>
-                
-                <Button
-                  style={styles.button}
-                  color={argonTheme.COLORS.SECONDARY}
-                  onPress={() => navigation.navigate("Register")}
-                  textStyle={{ color: argonTheme.COLORS.BLACK }}
-                >
-                  Verify OTP
-                </Button>
-
-
-              </Block>
-
-
-
-
+            <Text color="white" size={20}>
+              Enter OTP
+            </Text>
           </Block>
-           
+          <Block flex width={width * 0.8}>
+            <Input
+              onChangeText={(val) => {
+                this.setState({
+                  otp: val
+                })
+              }
+              }
+              placeholder="Enter 4 Digit OTP"
+              fullWidth
+              type="number"
+              iconContent={
+                <Icon
+                  size={12}
+                  style={{ marginRight: 10 }}
+                  color={argonTheme.COLORS.ICON}
+                  //name="g-check"
+                  family="ArgonExtra"
+
+                />
+              }
+            />
+            <Text
+              p
+              style={{ marginLeft: 2 }}
+              color={argonTheme.COLORS.ERROR}
+            >
+              {this.state.message}
+            </Text>
+          </Block>
         </Block>
-       
+
+        <Block flex space="between" style={styles.padded}>
+          <Block flex space="around" style={{ zIndex: 2 }}>
+
+            <Block center>
+              <Button
+                style={styles.button}
+                color={argonTheme.COLORS.SECONDARY}
+                onPress={
+                  () => this.onPressVerify()
+                }
+                textStyle={{ color: argonTheme.COLORS.BLACK }}
+              >
+                VERIFY OTP
+              </Button>
+            </Block>
+          </Block>
+        </Block>
       </Block>
     );
   }
@@ -108,7 +142,7 @@ const styles = StyleSheet.create({
     marginTop: '-50%'
   },
   title: {
-    marginTop:'-5%'
+    marginTop: '-5%'
   },
   subTitle: {
     marginTop: 20
