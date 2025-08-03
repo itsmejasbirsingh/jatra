@@ -70,6 +70,13 @@ export default function App() {
           buttonPositive: 'OK',
         },
       );
+
+
+      const grantedBackground = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_BACKGROUND_LOCATION
+      );
+
+
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         console.log('Location permission granted');
         getUserLocation();
@@ -79,6 +86,8 @@ export default function App() {
     } catch (err) {
       alert("Error asking user location")
     }
+
+    
   }
 
   useEffect(() => {
