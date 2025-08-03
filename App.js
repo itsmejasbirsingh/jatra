@@ -13,6 +13,8 @@ enableScreens();
 import Screens from "./navigation/Screens";
 import { Images, articles, argonTheme } from "./constants";
 
+import { PermissionsAndroid } from 'react-native';
+
 // cache app images
 const assetImages = [
   Images.Onboarding,
@@ -39,6 +41,28 @@ function cacheImages(images) {
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
 
+  async function requestLocationPermission() {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+          {
+            title: 'Location Access',
+            message: 'Jatra needs access to your location.',
+            buttonNeutral: 'Ask Me Later',
+            buttonNegative: 'Cancel',
+            buttonPositive: 'OK',
+          },
+        );
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+          console.log('Location permission granted');
+        } else {
+          alert('Location permission denied');
+        }
+      } catch (err) {
+        console.warn(err);
+      }
+    }
+
   useEffect(() => {
     async function prepare() {
       try {
@@ -53,6 +77,8 @@ export default function App() {
       } finally {
         // Tell the application to render
         setAppIsReady(true);
+
+        requestLocationPermission();
       }
     }
     prepare();
