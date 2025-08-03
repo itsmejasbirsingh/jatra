@@ -128,6 +128,7 @@ class BecomeRider extends React.Component {
                       <Block left width={width * 0.8} style={{ marginBottom: 15 }}>
 
                         <ModalDropdown
+                          saveScrollPosition={false}
                           isFullWidth={true}
                           options={options}
                           defaultValue={this.state.vehicleType}
@@ -142,9 +143,6 @@ class BecomeRider extends React.Component {
                             <Icon name={"nav-down"} family={"ArgonExtra"} size={10} color={argonTheme.COLORS.WHITE} />
                           </Block>
                         </ModalDropdown>
-
-                       
-
                       </Block>
 
                       {/* <Block width={width * 0.8}>
