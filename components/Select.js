@@ -20,7 +20,7 @@ class DropDown extends React.Component {
   }
 
   render() {
-    const { onSelect, iconName, iconFamily, iconSize, iconColor, color, textStyle, style, ...props } = this.props;
+    const { onSelect, iconName, iconFamily, iconSize, iconColor, color, textStyle, style, options, ...props } = this.props;
 
     const modalStyles = [
       styles.qty,
@@ -39,6 +39,7 @@ class DropDown extends React.Component {
         onSelect={this.handleOnSelect}
         dropdownStyle={styles.dropdown}
         dropdownTextStyle={{paddingLeft:16, fontSize:12}}
+        options={options}
         {...props}>
         <Block flex row middle space="between">
           <Text size={12} style={textStyles}>{this.state.value}</Text>

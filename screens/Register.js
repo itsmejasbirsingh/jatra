@@ -20,8 +20,8 @@ class Register extends React.Component {
   constructor() {
     super();
     this.state = {
-      fullName: '',
-      email: '',
+      fullName: 'Jasbir Singh',
+      email: 'jasbir@yopmail.com',
       isFormValid: false,
       message: ''
     };
@@ -114,7 +114,7 @@ class Register extends React.Component {
                   >
                     {this.state.message}
                   </Text> : <Text color="#8898AA" size={12}>
-                    Just few more details.
+                    Little More About You.
                   </Text>}
                 </Block>
                 <Block flex center>
@@ -125,6 +125,7 @@ class Register extends React.Component {
                   >
                     <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                       <Input
+                        value={this.state.fullName}
                         onChangeText={text => this.setState({
                           fullName: text
                         })}
@@ -143,6 +144,7 @@ class Register extends React.Component {
                     </Block>
                     <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                       <Input
+                        value={this.state.email}
                         onChangeText={text => this.setState({
                           email: text
                         })}

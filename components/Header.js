@@ -11,7 +11,7 @@ import argonTheme from '../constants/Theme';
 const { height, width } = Dimensions.get('window');
 const iPhoneX = () => Platform.OS === 'ios' && (height === 812 || width === 812 || height === 896 || width === 896);
 
-const BellButton = ({isWhite, style, navigation}) => (
+const BellButton = ({ isWhite, style, navigation }) => (
   null
   // <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
   //   <Icon
@@ -24,19 +24,26 @@ const BellButton = ({isWhite, style, navigation}) => (
   // </TouchableOpacity>
 );
 
-const BasketButton = ({isWhite, style, navigation}) => (
-  null
-  // <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
-  //   <Icon
-  //     family="ArgonExtra"
-  //     size={16}
-  //     name="basket"
-  //     color={argonTheme.COLORS[isWhite ? 'WHITE' : 'ICON']}
-  //   />
-  // </TouchableOpacity>
+const BasketButton = ({ isWhite, style, navigation }) => (
+  <Block style={{ minWidth: 150 }}>
+
+
+    <Icon
+      family="ArgonExtra"
+      size={16}
+      name="hat-3"
+      color={argonTheme.COLORS[isWhite ? 'WHITE' : 'ICON']}
+      style={{ position: 'absolute' }}
+    />
+
+
+    <Text style={{ marginLeft: 20 }} > Hello, Jasbir</Text>
+
+  </Block>
+
 );
 
-const SearchButton = ({isWhite, style, navigation}) => (
+const SearchButton = ({ isWhite, style, navigation }) => (
   <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
     <Icon
       size={16}
@@ -112,26 +119,26 @@ class Header extends React.Component {
     return (
       <Block>
         <Input
-        right
-        color="black"
-        style={styles.search}
-        placeholder="Pickup Location?"
-        placeholderTextColor={'#8898AA'}
-        //onFocus={() => navigation.navigate('Pro')}
-        iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="search-zoom-in" family="ArgonExtra" />}
-      />
-      <Input
-        right
-        color="black"
-        style={styles.search}
-        placeholder="Where you are heading?"
-        placeholderTextColor={'#8898AA'}
-        //onFocus={() => navigation.navigate('Pro')}
-        iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="search-zoom-in" family="ArgonExtra" />}
-      />
-      <Button color="success" style={styles.button}>
-                    SEARCH
-                  </Button>
+          right
+          color="black"
+          style={styles.search}
+          placeholder="Pickup Location?"
+          placeholderTextColor={'#8898AA'}
+          //onFocus={() => navigation.navigate('Pro')}
+          iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="search-zoom-in" family="ArgonExtra" />}
+        />
+        <Input
+          right
+          color="black"
+          style={styles.search}
+          placeholder="Where you are heading?"
+          placeholderTextColor={'#8898AA'}
+          //onFocus={() => navigation.navigate('Pro')}
+          iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="search-zoom-in" family="ArgonExtra" />}
+        />
+        <Button color="success" style={styles.button}>
+          SEARCH
+        </Button>
       </Block>
     );
   }
@@ -148,7 +155,7 @@ class Header extends React.Component {
         </Button>
         <Button shadowless style={styles.tab} onPress={() => navigation.navigate('Pro')}>
           <Block row middle>
-            <Icon size={16} name="bag-17" family="ArgonExtra" style={{ paddingRight: 8 }} color={argonTheme.COLORS.ICON}/>
+            <Icon size={16} name="bag-17" family="ArgonExtra" style={{ paddingRight: 8 }} color={argonTheme.COLORS.ICON} />
             <Text size={16} style={styles.tabTitle}>{optionRight || 'Fashion'}</Text>
           </Block>
         </Button>
@@ -158,7 +165,7 @@ class Header extends React.Component {
   renderTabs = () => {
     const { tabs, tabIndex, navigation } = this.props;
     const defaultTab = tabs && tabs[0] && tabs[0].id;
-    
+
     if (!tabs) return null;
 
     return (
@@ -204,13 +211,13 @@ class Header extends React.Component {
           right={this.renderRight()}
           rightStyle={{ alignItems: 'center' }}
           left={
-            <Icon 
-              name={back ? 'chevron-left' : "menu"} family="entypo" 
-              size={20} onPress={this.handleLeftPress} 
+            <Icon
+              name={back ? 'chevron-left' : "menu"} family="entypo"
+              size={20} onPress={this.handleLeftPress}
               color={iconColor || (white ? argonTheme.COLORS.WHITE : argonTheme.COLORS.ICON)}
               style={{ marginTop: 2 }}
             />
-              
+
           }
           leftStyle={{ paddingVertical: 12, flex: 0.2 }}
           titleStyle={[

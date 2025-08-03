@@ -19,7 +19,7 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      mobileNumber: '',
+      mobileNumber: '9457109062',
       isFormValid: false,
       message: ''
     };
@@ -67,6 +67,7 @@ class Login extends React.Component {
           </Block>
           <Block flex width={width * 0.8}>
             <Input
+              value={this.state.mobileNumber}
               onChangeText={(val) => {
                 this.setState({
                   mobileNumber: val

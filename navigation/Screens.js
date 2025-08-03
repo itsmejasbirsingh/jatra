@@ -20,6 +20,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
 import OTP from "../screens/OTP";
+import BecomeRider from "../screens/BecomeRider";
 
 const { width } = Dimensions.get("screen");
 
@@ -347,6 +348,41 @@ function AppStack(props) {
           headerShown: false,
         }}
       />
+      <Drawer.Screen
+        name="BecomeRider"
+        component={BecomeRiderStack}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Drawer.Navigator>
+  );
+}
+
+function BecomeRiderStack(props) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        mode: "card",
+        headerShown: "screen",
+      }}
+    >
+      <Stack.Screen
+        name="BecomeRider"
+        component={BecomeRider}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Become a Rider"
+              options
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" },
+        }}
+      />
+    
+    </Stack.Navigator>
   );
 }

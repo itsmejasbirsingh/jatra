@@ -19,7 +19,7 @@ class OTP extends React.Component {
   constructor() {
     super();
     this.state = {
-      otp: '',
+      otp: '1234',
       isFormValid: false,
       message: ''
     };
@@ -66,6 +66,7 @@ class OTP extends React.Component {
           </Block>
           <Block flex width={width * 0.8}>
             <Input
+            value={this.state.otp}
               onChangeText={(val) => {
                 this.setState({
                   otp: val

@@ -13,7 +13,7 @@ function CustomDrawerContent({
   state,
   ...rest
 }) {
-  const screens = ["Home"
+  const screens = ["Home", "Become a Rider"
     //,"Profile", "Account", "Elements", "Articles"
     ];
   return (
