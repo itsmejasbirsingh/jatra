@@ -14,6 +14,7 @@ import Screens from "./navigation/Screens";
 import { Images, articles, argonTheme } from "./constants";
 
 import { PermissionsAndroid } from 'react-native';
+import Geolocation from 'react-native-geolocation-service';
 
 // cache app images
 const assetImages = [
@@ -41,27 +42,44 @@ function cacheImages(images) {
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
 
+  function getUserLocation() {
+
+      Geolocation.getCurrentPosition(
+        (position) => {
+          console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
+        },
+        (error) => {
+          // See error code charts below.
+          console.log(error.code, error.message);
+        },
+        { enableHighAccuracy: true, timeout: 15000, maximumAge: 1000 }
+      );
+
+  }
+
+
   async function requestLocationPermission() {
-      try {
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-          {
-            title: 'Location Access',
-            message: 'Jatra needs access to your location.',
-            buttonNeutral: 'Ask Me Later',
-            buttonNegative: 'Cancel',
-            buttonPositive: 'OK',
-          },
-        );
-        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          console.log('Location permission granted');
-        } else {
-          alert('Location permission denied');
-        }
-      } catch (err) {
-        console.warn(err);
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+          title: 'Location Access',
+          message: 'Jatra needs access to your location.',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('Location permission granted');
+        getUserLocation();
+      } else {
+        alert('Jatra require your location access.');
       }
+    } catch (err) {
+      alert("Error asking user location")
     }
+  }
 
   useEffect(() => {
     async function prepare() {
